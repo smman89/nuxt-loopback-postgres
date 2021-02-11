@@ -1,10 +1,13 @@
 import {Entity, model, property} from '@loopback/repository';
 
-@model({settings: {strict: false}})
+@model({settings: {strict: true}, postgresql: {schema: 'public', table: 'estate'}})
 export class Estate extends Entity {
   @property({
     type: 'number',
     id: true,
+    postgresql: {
+      columnName: 'estate_id',
+    },
     generated: true,
   })
   estateId?: number;
@@ -12,6 +15,9 @@ export class Estate extends Entity {
   @property({
     type: 'number',
     required: true,
+    postgresql: {
+      columnName: 'location_id',
+    },
   })
   locationId: number;
 

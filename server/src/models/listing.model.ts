@@ -1,46 +1,67 @@
 import {Entity, model, property} from '@loopback/repository';
 
-@model({settings: {strict: false}})
+@model({settings: {strict: true}, postgresql: {schema: 'public', table: 'listing'}})
 export class Listing extends Entity {
   @property({
     type: 'number',
     id: true,
     generated: true,
+    postgresql: {
+      columnName: 'listing_id',
+    },
   })
   listingId?: number;
 
   @property({
     type: 'number',
     required: true,
+    postgresql: {
+      columnName: 'estate_id',
+    },
   })
   estateId: number;
 
   @property({
     type: 'number',
     required: true,
+    postgresql: {
+      columnName: 'user_id',
+    },
   })
   userId: number;
 
   @property({
     type: 'date',
     required: true,
+    postgresql: {
+      columnName: 'date_of_start',
+    },
   })
   dateOfStart: string;
 
   @property({
     type: 'date',
+    postgresql: {
+      columnName: 'date_of_end',
+    },
   })
   dateOfEnd?: string;
 
   @property({
     type: 'number',
     required: true,
+    postgresql: {
+      columnName: 'status_id',
+    },
   })
   statusId: number;
 
   @property({
     type: 'number',
     required: true,
+    postgresql: {
+      columnName: 'list_price',
+    },
   })
   listPrice: number;
 

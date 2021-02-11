@@ -1,65 +1,94 @@
 import {Entity, model, property} from '@loopback/repository';
 
-@model({settings: {strict: false}})
+@model({settings: {strict: true}, postgresql: {schema: 'public', table: 'transaction'}})
 export class Transaction extends Entity {
   @property({
     type: 'number',
     id: true,
     generated: true,
+    postgresql: {
+      columnName: 'transaction_id',
+    },
   })
   transactionId?: number;
 
   @property({
     type: 'number',
     required: true,
+    postgresql: {
+      columnName: 'estate_id',
+    },
   })
   estateId: number;
 
   @property({
     type: 'number',
     required: true,
+    postgresql: {
+      columnName: 'buyer_id',
+    },
   })
   buyerId: number;
 
   @property({
     type: 'number',
     required: true,
+    postgresql: {
+      columnName: 'seller_id',
+    },
   })
   sellerId: number;
 
   @property({
     type: 'number',
     required: true,
+    postgresql: {
+      columnName: 'transaction_type_id',
+    },
   })
   transactionTypeId: number;
 
   @property({
     type: 'number',
     required: true,
+    postgresql: {
+      columnName: 'list_price',
+    },
   })
   listPrice: number;
 
   @property({
     type: 'number',
     required: true,
+    postgresql: {
+      columnName: 'sold_price',
+    },
   })
   soldPrice: number;
 
   @property({
     type: 'date',
     required: true,
+    postgresql: {
+      columnName: 'date_of_start',
+    },
   })
-  dateOfBegin: number;
+  dateOfStart: string;
 
   @property({
     type: 'date',
-    required: true,
+    postgresql: {
+      columnName: 'date_of_end',
+    },
   })
-  dateOfClose: number;
+  dateOfEnd?: string;
 
   @property({
     type: 'number',
     required: true,
+    postgresql: {
+      columnName: 'status_id',
+    },
   })
   statusId: number;
 
